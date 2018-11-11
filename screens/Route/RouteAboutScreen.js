@@ -8,13 +8,14 @@ import {
 import SearchScreen from '../searchbar/index'
 import AboutScreen from '../About/About'
 import FavoriteScreen from '../toast/index'
-
+import DetailScreen from '../DetailNews/index'
 import {createStackNavigator} from "react-navigation"
  
 const AppAboutScreen = createStackNavigator ({
     about : AboutScreen,
     search : SearchScreen,
-    favorite : FavoriteScreen
+    favorite : FavoriteScreen,
+    detail : DetailScreen,
 })
 
 export default AppAboutScreen;

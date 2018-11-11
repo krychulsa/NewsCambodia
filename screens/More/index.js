@@ -17,7 +17,7 @@ import {
 import {TouchableOpacity} from 'react-native'
 import Icons from 'react-native-vector-icons/Ionicons';
 import styles from "./styles"
-
+import HeaderComponent from '../CustomeComponents/headerComponents/index'
 class CardComponent extends Component {
   render(){
     return(
@@ -41,19 +41,10 @@ class CardComponent extends Component {
   }
 }
 
-class index extends Component {
-  static navigationOptions = {
-    header:null,
-    tabBarLabel : null,
-    tabBarIcon : ({tintColor}) =>(
-        <Icons name = "ios-menu" size ={25} color={tintColor}></Icons>
-    )
-  } 
-
-  render() {
+class HeaderComponents extends Component{
+  render(){
     return (
-      <Container style={styles.container}>
-        <Header
+      <Header
           hasSubtitle 
           style={{backgroundColor:'#3866b8'}}
           androidStatusBarColor="#3866b8"
@@ -69,21 +60,54 @@ class index extends Component {
           </Body>
           <Right />
         </Header>
+    )
+  }
+}
 
+class index extends Component {
+  static navigationOptions = {
+    header:null,
+    tabBarLabel : null,
+    tabBarIcon : ({tintColor}) =>(
+        <Icons name = "ios-menu" size ={25} color={tintColor}></Icons>
+    )
+  } 
+
+
+  
+  render() {
+    return (
+      <Container style={styles.container}>
+
+          <HeaderComponent/>
         <Content padder>
           <Card style={styles.mb}>
+            <CardItem header bordered style={styles.cardHeaderBackground}>
+              <Text style={styles.cardHeaderText}>GENERAL</Text>
+            </CardItem>
+              <CardComponent siconName = "logo-googleplus" color= "#DD5044" text = "Google Plus"/>
+              <CardComponent siconName = "logo-facebook" color= "#3B579D" text = "facebook"/>
+              <CardComponent siconName = "logo-twitter" color= "#55ACEE" text = "Twitter"/>
+              <CardComponent siconName = "logo-reddit" color= "#FF4500" text = "Reddit"/>
+              <CardComponent siconName = "logo-linkedin" color= "#007BB6" text = "LinkedIn"/>
+              <CardComponent siconName = "logo-youtube" color= "#D62727" text = "YouTube"/>
+          </Card>
 
-            <CardComponent siconName = "logo-googleplus" color= "#DD5044" text = "Google Plus"/>
-            <CardComponent siconName = "logo-facebook" color= "#3B579D" text = "facebook"/>
-            <CardComponent siconName = "logo-twitter" color= "#55ACEE" text = "Twitter"/>
-            <CardComponent siconName = "logo-reddit" color= "#FF4500" text = "Reddit"/>
-            <CardComponent siconName = "logo-linkedin" color= "#007BB6" text = "LinkedIn"/>
-            <CardComponent siconName = "logo-youtube" color= "#D62727" text = "YouTube"/>
-            <CardComponent siconName = "logo-googleplus" color= "#DD5044" text = "Google Plus"/>
-            <CardComponent siconName = "logo-facebook" color= "#3B579D" text = "facebook"/>
-            <CardComponent siconName = "logo-twitter" color= "#55ACEE" text = "Twitter"/>
-            <CardComponent siconName = "logo-reddit" color= "#FF4500" text = "Reddit"/>
-            <CardComponent siconName = "logo-linkedin" color= "#007BB6" text = "LinkedIn"/>
+          <Card style={styles.mb}>
+            <CardItem header bordered style={styles.cardHeaderBackground}>
+              <Text style={styles.cardHeaderText}>SETTING</Text>
+            </CardItem>
+              <CardComponent siconName = "logo-googleplus" color= "#DD5044" text = "Google Plus"/>
+              <CardComponent siconName = "logo-facebook" color= "#3B579D" text = "facebook"/>
+              <CardComponent siconName = "logo-twitter" color= "#55ACEE" text = "Twitter"/>
+              <CardComponent siconName = "logo-reddit" color= "#FF4500" text = "Reddit"/>
+              <CardComponent siconName = "logo-linkedin" color= "#007BB6" text = "LinkedIn"/>
+          </Card> 
+
+          <Card style={styles.mb}> 
+            <CardItem header bordered style={styles.cardHeaderBackground}>
+              <Text style={styles.cardHeaderText}>ABOUT</Text>
+            </CardItem>
             <CardComponent siconName = "logo-youtube" color= "#D62727" text = "YouTube"/>
             <CardComponent siconName = "logo-googleplus" color= "#DD5044" text = "Google Plus"/>
             <CardComponent siconName = "logo-facebook" color= "#3B579D" text = "facebook"/>

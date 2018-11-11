@@ -24,7 +24,7 @@ class DetailScreen extends Component {
         header:null,
         tabBarLabel : null,
         tabBarIcon : ({tintColor}) =>(
-            <Icon name="home"></Icon>
+            <Icon name="home" style={{color:tintColor, fontSize: 27}}></Icon>
         )
     } 
 

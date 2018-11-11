@@ -1,0 +1,122 @@
+
+
+
+
+                    --*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*
+                                    
+                                                                        Screen Structure
+
+                    --*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*--*|*--*
+
+
++   Tab navigation:
+        -   Home :
+            +   Header Components :
+                -   Title (Home)
+                -   Search (Search Bar) :
+                    +   Header components :
+                        -   Back arrow
+                        -   Input search bar
+                        -   ...
+                    +   Content components :
+                        -   Auto suggestion content that match with the keyword
+                        -   List all suggestion news in FLATLIST components as list in the homepage.
+            +   Content Components :
+                -   First news (Only one news)
+                -   Next news (Remaining news)
+                -   Trending news (the top rating news)
+                -   ...
+                Remark :
+                    +   Detail news :   
+                        -   Header components:
+                            +   Back arrow
+                            +   Title of news
+                            +   Add to favorite
+                            +   Share to Social
+                            +   View in Original webpage
+                            +   ...
+                        -   Content components :
+                            +   Image (thumbnail)
+                            +   News title
+                            +   News body (Html format, so this Application has ability to Display videos and combination of other image as well)
+                            +   Credit to the news resources
+                            +   ...
+        -   Content Type :
+            +   Categories :
+                -   Beauty
+                -   Political
+                -   Traffic
+                -   Social 
+                -   ...
+            +   News resources :
+                -   Sabay news
+                -   Koh Santepheap daily
+                -   Cambodia daily
+                -   Kamchea Thmey
+                -   Raksmei Kamchea
+                -   Fresh news asia
+                -   ...
+            +   Original resources:
+                -   List down all news resources
+                -   Show in internal view as Original webpage
+            +   ... (For education and working system)
+
+            Remark : UI based on Google News
+
+        -   Favorite news :
+            +   List down all the favorite news
+            +   List down news used to shared
+            +   List down the categories of news based on the favorite
+
+            Remark : All image and thumbnail :
+                    -   If image still available for on offline mode, otherwise will Display the Default thumbnail
+
+        -   More :
+            +   Header Components :
+                -   Title(More Setting)
+            +   Content Components :
+                -   General :
+                    +   Profile
+                    +   Change password
+                    +   Change username
+                    +   Change general information
+                -   Setting :
+                    +   Change language :
+                        -   English
+                        -   Khmer
+                        -   Thailand
+                        -   Vietnam
+                        -   ...
+
+                        Remark : Default language based on country they are located.
+                            Ex : User from Cambodia, so Default language should be KHMER.
+
+                    +   Push notification option :
+                        -   Mute notification
+                        -   Show daily notifications
+                        -   ...
+
+                -   About :
+                    +   News Cambodia
+                    +   KC Technology
+                    +   ...
+                -   Contact :
+                    +   Feedback
+                    +   Advertising
+            
+                -   Careers
+
+
+
+
+        Remark:
+            +   Haven't the internet connection, 
+                -   Application will switch to offline mode
+                -   Display old data from that store in local storage
+            +   Have the internet connection 
+                -   The new data will be insert to local storage 
+                -   Display information after data inserted successfully.
+                -   If existing news contain in the local database, so no need to insert the new one.
+            +   News option:
+                -   News based on the country
+                    +   If traffic from Thailand, so the news resources should list news resources from Thailand

@@ -4,8 +4,8 @@ import {
     Text,
     StyleSheet
 } from "react-native";
-import { Container, Button } from "native-base";
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Container, Button, Icon } from "native-base";
+//import Icon from 'react-native-vector-icons/Ionicons';
 import {createBottomTabNavigator} from "react-navigation"
 import DetailScreen from "../Header/DetailScreen";
 import AboutScreen from '../Route/RouteAboutScreen'
@@ -21,7 +21,7 @@ const HomeTabNavigation = createBottomTabNavigator(
                 header:null,
                 tabBarLabel : null,
                 tabBarIcon : ({tintColor}) =>(
-                    <Icon name="ios-home" color={tintColor} size={25}/>
+                    <Icon name="home" style={{color:tintColor, fontSize:27}}/>
                 )
             } 
         },
@@ -35,8 +35,8 @@ const HomeTabNavigation = createBottomTabNavigator(
             tabBarVisible : true,
         },
         tabBarOptions :{
-            activeTintColor : '#3866b8',
-            inactiveTintColor: 'grey'
+            activeTintColor : 'grey',
+            inactiveTintColor: '#3866b8'
         }
     }
 )

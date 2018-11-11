@@ -8,6 +8,12 @@ export default {
   },
   mb: {
     marginBottom: 15
+  },
+  cardHeaderText:{
+    color:'grey'
+  },
+  cardHeaderBackground:{
+    backgroundColor : '#f0f3f4'
   }
 };
 

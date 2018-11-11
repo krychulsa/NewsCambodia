@@ -10,4 +10,5 @@ import AppTabNavigator from './screens/Route/RouteConfigure'
 import AboutScreen from './screens/About/About'
 import About from './screens/About/index'
 import RouteAboutScreen from './screens/Route/RouteAboutScreen'
-AppRegistry.registerComponent(appName, () => AppTabNavigator);
+import index from './screens/Home/HomeScreen'
+AppRegistry.registerComponent(appName, () => index);

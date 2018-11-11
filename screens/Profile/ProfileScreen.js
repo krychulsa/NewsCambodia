@@ -4,21 +4,26 @@ import {
     Text,
     StyleSheet
 } from "react-native";
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Icon, Container, Content } from "native-base";
+import HeaderComponent from '../CustomeComponents/headerComponents/index'
 class ProfileScreen extends Component {
     static navigationOptions = {
         header:null,
         tabBarLabel : null,
         tabBarIcon : ({tintColor}) =>(
-            <Icon name="ios-person" size ={25} color={tintColor}></Icon>
+            <Icon name="person" style= {{color:tintColor, fontSize:27}}></Icon>
         )
     } 
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text>ProfilScreen</Text>
-            </View>
+            <Container style={styles.container}>
+                <HeaderComponent/>
+
+                <Content padder>
+                    <Text>ProfilScreen</Text>
+                </Content>
+            </Container>
         );
     }
 }
@@ -26,8 +31,6 @@ export default ProfileScreen;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+        backgroundColor:'#fff'
     }
 });

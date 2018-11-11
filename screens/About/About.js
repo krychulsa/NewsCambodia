@@ -6,7 +6,9 @@ import {
   FlatList,
   ActivityIndicator,
   TouchableOpacity,
-  Image
+  Image,
+  Dimensions,
+  Platform
 } from "react-native";
 import {
   Header,
@@ -19,30 +21,20 @@ import {
   Right,
   Content,
   Toast,
-  List
+  List,
+  Item,
+  Input
 } from "native-base";
 //import Icon from 'react-native-vector-icons/Ionicons';
 import contentData from "../asset/data/contents.json";
 import index from "../More/index.js";
+import FlatListDataFirstItem from '../CustomeComponents/flatListForFirstElement'
+import FlatListDataNextItem from '../CustomeComponents/flatListForNextElement'
+import CategoryComponent from '../CustomeComponents/scrollviewByCategories/index'
+import HeaderComponent from "../CustomeComponents/headerComponents/index.js";
 
-class FlatListDataItem extends Component {
-    render(){
-      return(
-          <TouchableOpacity onPress={()=>alert(this.props.company)}>
-              <View style={{flex:1, flexDirection:'row', height:150}}>
-                  <View style={{flex:30}}>
-                  <Image 
-                        source={{uri: this.props.picture}}
-                        style={{width: 100, height: 100}} />
-                  </View>
-                  <View style={{flex:70}}>
-                    <Text>{this.props.about} </Text>
-                  </View>
-              </View>
-          </TouchableOpacity>
-      )
-    }
-}
+const {width, height} = Dimensions.get('window');
+const firstThumnail = width*337/512
 
 class AboutScreen extends Component {
   static navigationOptions = {
@@ -61,6 +53,8 @@ class AboutScreen extends Component {
     };
   }
 
+
+  
   componentDidMount() {
     return fetch(
       "http://www.json-generator.com/api/json/get/bZuAiFGmYy?indent=2"
@@ -80,86 +74,57 @@ class AboutScreen extends Component {
       });
   }
   render() {
-    if (this.state.isLoading) {
+    // if (this.state.isLoading) {
+    //   return (
+    //     <Container style={styles.container}>
+          
+    //       <HeaderComponent/>
+
+    //       <Content padder>
+    //         <View style={{ flex: 1, alignItems: 'center' }}>
+    //           <Image source = {require('../asset/Loading/loading.gif')}
+    //           style={{width: width, height: firstThumnail}} 
+    //           />
+              
+    //         </View>
+    //         <View style={{ flex: 1, alignItems: 'center' }}>
+    //           <Image source = {require('../asset/Loading/loading.gif')}
+    //           style={{width: width, height: firstThumnail}} 
+    //           />
+    //           </View>
+
+    //           <View style={{ flex: 1, alignItems: 'center' }}>
+    //           <Image source = {require('../asset/Loading/loading.gif')}
+    //           style={{width: width, height: firstThumnail}} 
+    //           />
+    //           </View>
+    //       </Content>
+    //     </Container>
+    //   );
+    // } else {
       return (
         <Container style={styles.container}>
-          <Header
-            hasSubtitle
-            style={{ backgroundColor: "#3866b8" }}
-            androidStatusBarColor="#3866b8"
-            iosBarStyle="light-content"
-          >
-            <Left>
-              <Button transparent>
-                <Icon name="arrow-back" style={{ color: "#FFF" }} />
-              </Button>
-            </Left>
-            <Body>
-                <Title style={styles.textColor}>Loading ...</Title>
-            </Body>
-            <Right>
-              <Button transparent>
-                <Icon name="search" size={30} style={{ color: "#FFF" }} />
-              </Button>
-              <Button transparent>
-                <Icon name="heart" style={{ color: "#FFF" }} />
-              </Button>
-              <Button transparent>
-                <Icon name="share" style={{ color: "#FFF" }} />
-              </Button>
-            </Right>
-          </Header>
-          <Content padder>
-            <View style={{ flex: 1, alignItems: 'center' }}>
-              <ActivityIndicator />
-            </View>
-          </Content>
-        </Container>
-      );
-    } else {
-      return (
-        <Container style={styles.container}>
-          <Header
-            hasSubtitle
-            style={{ backgroundColor: "#3866b8" }}
-            androidStatusBarColor="#3866b8"
-            iosBarStyle="light-content"
-          >
-            <Left>
-              <Button
-                transparent
-                onPress={() => this.props.navigation.goBack()}
-              >
-                <Icon name="arrow-back" style={{ color: "#FFF" }} />
-              </Button>
-            </Left>
-            <Body>
-              <Title style={styles.textColor}>Home</Title>
-            </Body>
-            <Right>
-              <Button
-                transparent
-                onPress={() => this.props.navigation.navigate("search")}
-              >
-                <Icon name="search" size={30} style={{ color: "#FFF" }} />
-              </Button>
-              <Button
-                transparent
-                onPress={() => this.props.navigation.navigate("favorite")}
-              >
-                <Icon name="heart" style={{ color: "#FFF" }} />
-              </Button>
-              <Button transparent onPress={() => alert("Press Button More")}>
-                <Icon name="share" style={{ color: "#FFF" }} />
-              </Button>
-            </Right>
-          </Header>
+          
+          <HeaderComponent/>
+          
           <Content padder>
             <List>
               <FlatList
-                data={this.state.data}
+                //data={this.state.data}
+                data = {contentData}
                 renderItem={({ item, index }) => (
-                  index === 0 ? <FlatListDataItem company={item.company} picture={item.picture} about = {item.about}/> : <FlatListDataItem company={item.company} picture={item.picture} about = {item.greeting}/>
+
+                  index % 6 === 0 ?
+                  <View>
+                  <CategoryComponent/>
+                  <TouchableOpacity onPress={()=>this.props.navigation.navigate("detail", item)} style={{marginBottom:20}}>
+                    <FlatListDataFirstItem address={`${item.address.substring(0,75)}...`} company={item.company} picture={item.picture} about = {`${item.about.substring(0,90)}...`}/> 
+                  </TouchableOpacity> 
+                  </View> 
+                    : 
+                  <TouchableOpacity onPress={()=>this.props.navigation.navigate("detail", item)} style={{marginBottom:20}}>
+                    <FlatListDataNextItem address={`${item.address.substring(0,45)}...`} company={item.company} picture={item.picture} about = {`${item.about.substring(0,75)}...`}/>
+                  </TouchableOpacity>
                 )}
                 keyExtractor={({id}, index) => id}
               />
@@ -170,12 +135,12 @@ class AboutScreen extends Component {
       );
     }
   }
-}
+// }
 export default AboutScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#FFF"
+    backgroundColor: "#FFF",
   },
   mb10: {
     marginBottom: 10

@@ -1,0 +1,35 @@
+
+
++   User table :
+    -   id : int
+    -   firstName : string
+    -   lastName : string
+    -   userName : string
+    -   userPassword : string
+    -   phoneNumber : string
+    -   email : string
+    -   description : html-text
+    -   isUpdate : boolean
+
++   Favorite news :
+    -   id : int
+    -   gId : int 
+    -   resourcesId : int
+    -   title : string
+    -   thumbnail : image
+    -   url : string
+
++   News resources :
+    -   id : int 
+    -   title : string 
+    -   thumbnailSmall : image
+    -   thumbnailLarge : image
+    -   aboutNews : string
+    -   isUpdate : boolean
+
++   News Contents :
+    -   id : int
+    -   gId : int 
+    -   resourcesId : int
+    -   title : string
+    -   thumbnail : images

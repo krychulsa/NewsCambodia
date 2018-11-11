@@ -4,24 +4,29 @@ import {
     Text,
     StyleSheet
 } from "react-native";
-//import { Icon } from "native-base";
-import Icon from 'react-native-vector-icons/Ionicons';
-
+import { Icon, Container, Content } from "native-base";
+//import Icon from 'react-native-vector-icons/Ionicons';
+import HeaderComponent from '../CustomeComponents/headerComponents/index'
 class SettingScreen extends Component {
 
     static navigationOptions = {
         header:null,
         tabBarLabel : null,
         tabBarIcon : ({tintColor}) =>(
-            <Icon name="ios-settings" color={tintColor} size={25}></Icon>
+            <Icon name="settings" style ={{color:tintColor, fontSize:27}}></Icon>
         )
     } 
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text>SettingScreen</Text>
-            </View>
+            <Container style ={styles.container}>
+
+                <HeaderComponent/>
+                
+                <Content padder>
+                    <Text>Content go here!</Text>
+                </Content>
+            </Container>
         );
     }
 }
@@ -29,8 +34,6 @@ export default SettingScreen;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+        backgroundColor : '#fff'
     }
 });
